@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Ashbury Gazette — Archive</title>
+<style>
+  *{box-sizing:border-box}
+  body{
+    margin:0;background:#10100e;color:#d8d3c5;
+    font-family:Georgia,"Times New Roman",serif;
+  }
+  .browser{
+    width:min(1180px,96vw);margin:24px auto;background:#1b1b18;
+    border:1px solid #3a3932;box-shadow:0 18px 60px #000;
+  }
+  .bar{background:#282722;padding:10px;display:flex;gap:9px;align-items:center}
+  .dot{width:12px;height:12px;border-radius:50%;background:#555}
+  .address{flex:1;background:#151513;border:1px solid #3b3a34;padding:7px 12px;color:#888;font:12px monospace}
+  .page{padding:28px;background:#b5ae9d;color:#181813;min-height:720px;position:relative;overflow:hidden}
+  .page:after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.10;
+    background:repeating-linear-gradient(0deg,#000 0 1px,transparent 1px 4px)}
+  header{text-align:center;border-top:5px double #181813;border-bottom:5px double #181813;padding:10px 0}
+  h1{font-size:52px;margin:0;letter-spacing:2px}
+  .subtitle{font-size:12px;letter-spacing:3px}
+  .date{display:flex;justify-content:space-between;font-size:12px;margin:8px 0}
+  .headline{text-align:center;font-size:34px;margin:18px 0 4px;text-transform:uppercase}
+  .lead{text-align:center;font-style:italic;margin-bottom:18px}
+  .grid{display:grid;grid-template-columns:2fr 1fr;gap:20px}
+  .main,.side{border-top:2px solid #181813;padding-top:10px}
+  .main h2,.side h2{margin:0 0 8px;font-size:20px;text-transform:uppercase}
+  .missing{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+  .card{border:1px solid #37362f;padding:12px;background:#aaa493;cursor:pointer;transition:.15s}
+  .card:hover{background:#c0b9a6;transform:translateY(-2px)}
+  .photo{height:115px;background:#252521;display:flex;align-items:center;justify-content:center;color:#777;
+    font-family:monospace;font-size:12px;filter:grayscale(1)}
+  .card h3{margin:9px 0 4px;font-size:18px}
+  .meta{font:11px monospace}
+  .clue{margin-top:15px;padding:12px;border:1px dashed #34332d;background:#a49e8e;font-family:monospace;font-size:12px}
+  .side article{border-bottom:1px solid #45443b;padding:9px 0}
+  .side article b{display:block}
+  .warning{margin-top:15px;border:2px solid #25241f;padding:10px;font-weight:bold;text-align:center}
+  footer{text-align:center;border-top:3px double #181813;margin-top:20px;padding-top:10px;font-size:11px}
+  .modal{display:none;position:fixed;inset:0;background:#000b;align-items:center;justify-content:center;z-index:5}
+  .modal.open{display:flex}
+  .box{width:min(620px,90vw);background:#b5ae9d;color:#171713;border:3px double #171713;padding:22px;box-shadow:0 0 50px #000}
+  .box h2{margin-top:0}
+  button{background:#24231f;color:#ddd;border:0;padding:8px 13px;cursor:pointer}
+  .search{display:flex;gap:6px;margin-bottom:12px}
+  .search input{width:100%;padding:8px;border:1px solid #444;background:#d0c8b5;font-family:monospace}
+  #result{font:12px monospace;min-height:16px}
+  .glitch{animation:glitch 4s infinite}
+  @keyframes glitch{0%,96%,100%{opacity:1}97%{opacity:.4;transform:translateX(2px)}98%{opacity:1;transform:translateX(-2px)}}
+  @media(max-width:750px){h1{font-size:34px}.grid{grid-template-columns:1fr}.missing{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="browser">
+  <div class="bar">
+    <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+    <div class="address">https://ashbury-gazette.local/archive/1999</div>
+  </div>
+
+  <main class="page">
+    <header>
+      <div class="subtitle">THE</div>
+      <h1 class="glitch">ASHBURY GAZETTE</h1>
+      <div class="subtitle">LOCAL NEWS • COMMUNITY • PUBLIC RECORD</div>
+    </header>
+
+    <div class="date">
+      <span>THURSDAY, OCTOBER 14, 1999</span><span>VOL. 87 — NO. 41</span>
+    </div>
+
+    <h2 class="headline">FIVE PEOPLE MISSING AFTER SEARCH FOR LOST STUDENT</h2>
+    <div class="lead">Authorities ask residents to report any information regarding four students and one teacher who disappeared while searching for a missing student.</div>
+
+    <div class="grid">
+      <section class="main">
+        <h2>Missing Students & Teacher</h2>
+        <div class="missing">
+<div class="card" onclick="openCase(1)"><div class="photo">[ STUDENT PHOTO 01 ]</div><h3>NOAH VALE</h3><div class="meta">AGE 13 • STUDENT<br>LAST SEEN: UNDERWATER CAVE</div></div>
+<div class="card" onclick="openCase(2)"><div class="photo">[ STUDENT PHOTO 02 ]</div><h3>LENA REED</h3><div class="meta">AGE 14 • STUDENT<br>LAST SEEN: UNDERWATER CAVE</div></div>
+<div class="card" onclick="openCase(3)"><div class="photo">[ STUDENT PHOTO 03 ]</div><h3>RYAN PRICE</h3><div class="meta">AGE 13 • STUDENT<br>LAST SEEN: UNDERWATER CAVE</div></div>
+<div class="card" onclick="openCase(4)"><div class="photo">[ STUDENT PHOTO 04 ]</div><h3>MIA BELL</h3><div class="meta">AGE 14 • STUDENT<br>LAST SEEN: UNDERWATER CAVE</div></div>
+<div class="card" onclick="openCase(5)"><div class="photo">[ STAFF PHOTO ]</div><h3>MR. ADRIAN CROSS</h3><div class="meta">AGE 38 • TEACHER<br>LAST SEEN: UNDERWATER CAVE</div></div>
+</div>
+        <div class="clue">
+          ARCHIVE NOTE // The five disappearance reports were filed by different officers.<br>
+          Oddly, each report contains the same handwritten sentence:<br><br>
+          <b>"DO NOT FOLLOW THE LANTERNS."</b>
+        </div>
+      </section>
+
+      <aside class="side">
+        <h2 style="margin-top:18px">Other News</h2>
+        <article><b>POWER OUTAGE AFFECTS EAST ROAD</b>Residents report lights going out at exactly 3:17 AM.</article>
+        <article><b>FOREST TRAIL CLOSED</b>Officials cite "unstable ground" near the northern path.</article>
+        <article><b>LOCAL FARMER REPORTS STRANGE LIGHTS</b>Witness describes several lights moving between the trees.</article>
+        <article><b>POLICE DENY CONNECTION</b>Authorities say the five-person disappearance is still under investigation.</article>
+
+        <div class="warning">IF YOU KNOW SOMETHING, CALL 019-000-0417.</div>
+      </aside>
+    </div>
+
+    <footer>
+      © 1999 Ashbury Gazette. Digitized from municipal archive. Some records may be incomplete.
+      <br><span style="font-family:monospace">page_ref: 4 / 4 / 17</span>
+    </footer>
+  </main>
+</div>
+
+<div class="modal" id="modal" onclick="if(event.target===this)closeCase()">
+  <div class="box">
+    <h2 id="caseTitle"></h2>
+    <p id="caseText"></p>
+    <p id="caseClue" style="font-family:monospace"></p>
+    <button onclick="closeCase()">CLOSE FILE</button>
+  </div>
+</div>
+
+<script>
+const cases = {
+1:{title:"CASE FILE 01 — NOAH VALE",text:"Age 13. Noah was one of four students who entered the woods while searching for a missing classmate. He was last seen carrying a small lantern near the underwater cave.",clue:"LAST NOTE: 'WE HEARD SOMEONE CALLING FROM UNDERGROUND.'"},
+2:{title:"CASE FILE 02 — LENA REED",text:"Age 14. Lena disappeared after the group reached the underwater cave. Her notebook contained a map of tunnels that do not appear on any town records.",clue:"NOTEBOOK: 'THE LIGHTS ARE GETTING CLOSER.'"},
+3:{title:"CASE FILE 03 — RYAN PRICE",text:"Age 13. Ryan was last seen near the underwater cave. His backpack was recovered beside the water, but his footprints continued in the opposite direction.",clue:"RECORDED MESSAGE: 'DON'T LET MR. CROSS OPEN THE DOOR.'"},
+4:{title:"CASE FILE 04 — MIA BELL",text:"Age 14. Mia disappeared near the underwater cave while the students searched for their missing classmate. A lantern inside was still burning.",clue:"CARVING: 'FOUR CAME IN. FIVE WENT OUT.'"},
+5:{title:"CASE FILE 05 — MR. ADRIAN CROSS",text:"Age 38. Adrian Cross, a teacher at Ashbury Secondary, entered the underwater cave area with the four students to search for another missing student. None of the five returned.",clue:"FINAL REPORT: 'SEARCH PARTY TERMINATED AT 03:17 AM.'"}
+};
+
+function openCase(n){
+ document.getElementById("caseTitle").textContent=cases[n].title;
+ document.getElementById("caseText").textContent=cases[n].text;
+ document.getElementById("caseClue").textContent=cases[n].clue;
+ document.getElementById("modal").classList.add("open");
+}
+function closeCase(){document.getElementById("modal").classList.remove("open")}
+
+</script>
+</body>
+</html>
